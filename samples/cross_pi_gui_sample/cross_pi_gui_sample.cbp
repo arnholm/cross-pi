@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="cross_pi_gui_sample"/>
+		<Option pch_mode="2"/>
+		<Option compiler="gcc_generic"/>
+		<Build>
+			<Target title="GCC_Release">
+				<Option output=".cmp\gcc\cross_pi_gui_sample" prefix_auto="0" extension_auto="1"/>
+				<Option object_output=".cmp\gcc\obj\Release\"/>
+				<Option type="0"/>
+				<Option compiler="gcc_generic"/>
+				<Option projectLinkerOptionsRelation="2"/>
+				<Compiler>
+					<Add option="-std=c++0x"/>
+					<Add option="-W"/>
+					<Add option="-fPIC"/>
+					<Add option="-DNOPCH"/>
+					<Add option="-fexceptions"/>
+					<Add option="-Os"/>
+					<Add option="`$(#wx.config) --cxxflags`"/>
+				</Compiler>
+				<Linker>
+					<Add option="`$(#wx.config) --libs std,aui --static`"/>
+				</Linker>
+				<ExtraCommands>
+					<Add before="rm -f $(TARGET_OUTPUT_FILE)"/>
+					<Add after="cp $(TARGET_OUTPUT_FILE) ../stage"/>
+					<Mode after="always"/>
+				</ExtraCommands>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add directory="$(CPDE_USR)\include"/>
+			<Add directory="$(#boost.include)"/>
+		</Compiler>
+		<ResourceCompiler>
+			<Add directory="$(#wx)\include"/>
+		</ResourceCompiler>
+		<Linker>
+			<Add directory="$(CPDE_USR)\lib"/>
+			<Add directory="$(#boost.lib)"/>
+		</Linker>
+		<Unit filename="cross_pi_gui_sampleApp.cpp"/>
+		<Unit filename="cross_pi_gui_sampleApp.h"/>
+		<Unit filename="cross_pi_gui_sampleMain.cpp"/>
+		<Unit filename="cross_pi_gui_sampleMain.h"/>
+		<Unit filename="resource.rc">
+			<Option compilerVar="WINDRES"/>
+		</Unit>
+		<Unit filename="wxsmith/cross_pi_gui_sampledialog.wxs"/>
+		<Extensions>
+			<code_completion/>
+			<envvars/>
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="cross_pi_gui_sampleApp.cpp" main="cross_pi_gui_sampleDialog" init_handlers="necessary" language="CPP"/>
+				<resources>
+					<wxDialog wxs="wxsmith/cross_pi_gui_sampledialog.wxs" src="cross_pi_gui_sampleMain.cpp" hdr="cross_pi_gui_sampleMain.h" fwddecl="0" i18n="1" name="cross_pi_gui_sampleDialog" language="CPP"/>
+				</resources>
+			</wxsmith>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
