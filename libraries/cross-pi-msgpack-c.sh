@@ -23,6 +23,7 @@ pushd msgpack-c/ > /dev/null
 # cmake must be informed about the cross compiler(s) using a special toolchain cmake file
 echo "set(CMAKE_C_COMPILER   $HOME/cross-pi-build/buildroot/output/host/bin/arm-linux-gcc )" >  ./rpi_toolchain.cmake
 echo "set(CMAKE_CXX_COMPILER $HOME/cross-pi-build/buildroot/output/host/bin/arm-linux-g++ )" >> ./rpi_toolchain.cmake
+echo "set(CMAKE_SYSROOT      $HOME/cross-pi-build/buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot/ )" >> ./rpi_toolchain.cmake
 
 # invoke cmake with the given toolchain
 cmake -D CMAKE_TOOLCHAIN_FILE=./rpi_toolchain.cmake .
