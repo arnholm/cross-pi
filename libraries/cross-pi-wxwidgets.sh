@@ -48,11 +48,13 @@ pushd buildrpi > /dev/null
 # make sure the buildroot toolchain is first in PATH so we find the correct cross-compiler 
 export PATH=$HOME/cross-pi-build/buildroot/output/host/usr/bin:$PATH
 
+# Tell g++ where the cross-compiler sysroot is
+export CXXFLAGS="--sysroot=$HOME/cross-pi-build/buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot/ $CXXFLAGS"
+
 # this is where cross-compled wxWidgets will be installed
 TARGET_DIR="$HOME/cross-pi-build/libraries/${WX_NAME}"
 
 # the target host system is Raspberry PI, a.k.a. arm-linux
-# Actually this is armV7
 CFG_HOST="arm-linux"
 
 # Run the wxwidgets configure script

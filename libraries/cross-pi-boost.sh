@@ -18,16 +18,12 @@ TARGET_DIR=$HOME/cross-pi-build/libraries/${BOOST_NAME}
 rm -Rf /tmp/build_boost
 mkdir /tmp/build_boost
 wget https://dl.bintray.com/boostorg/release/1.${BOOST_VERSION}.0/source/${BOOST_NAME}.tar.bz2 -P /tmp/build_boost
-# wget https://downloads.sourceforge.net/project/boost/boost/1.${BOOST_VERSION}.0/source/${BOOST_NAME}.tar.bz2 -P /tmp/build_boost
-# cp -v ./archive/boost_1_72_0.tar.bz2  /tmp/build_boost/
+# 
+# cp -v /NAS_openbzr/redist/boost_1_72_0.tar.bz2  /tmp/build_boost/
 #
 # move to download directory and extract the package
 pushd /tmp/build_boost > /dev/null 
 tar -xvf ${BOOST_NAME}.tar.bz2
-
-# Create a boost user configuration file specifying the cross compiler
-# This is how we tell boost ./b2 to cross compile
-echo " using gcc : : $HOME/cross-pi-build/buildroot/output/host/bin/arm-linux-g++  ; " > ./user-config.jam
 
 # Move to main boost folder to perform the bootstrap and generate ./b2
 pushd ${BOOST_NAME} > /dev/null 
@@ -38,6 +34,11 @@ pushd ${BOOST_NAME} > /dev/null
 if [ $? != 0 ]; then exit -1 ; fi
 
 rm -Rf $HOME/cross-pi-build/libraries/${BOOST_NAME}
+
+# Create a boost user configuration file specifying the cross compiler
+# This is how we tell boost ./b2 to cross compile
+echo " using gcc : : $HOME/cross-pi-build/buildroot/output/host/bin/arm-linux-g++ : --sysroot=$HOME/cross-pi-build/buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot/ ; " > ../user-config.jam
+
 # now run ./b2 which will invoke the cross compiler specified in user-config.jam 
 # ./b2 will also install to the folder specified in --prefix above
 DISABLE="--without-mpi --without-graph_parallel"
