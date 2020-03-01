@@ -11,7 +11,7 @@ fi
 
 sudo apt update
 sudo apt upgrade
-# sudo apt install debhelper cdbs automake libtool libwxgtk3.0-dev wx-common libbz2-dev zlib1g-dev libgtk2.0-dev libgamin-dev libboost-dev  libboost-system-dev libhunspell-dev libfontconfig1-dev libglib2.0-dev
+# sudo apt install debhelper cdbs automake libtool libwxgtk3.0-dev wx-common libbz2-dev zlib1g-dev libgtk2.0-dev libgamin-dev libboost-dev  libboost-system-dev libhunspell-dev libfontconfig1-dev libglib2.0-dev xterm
 
 
 #build in a temporary, disposable folder
