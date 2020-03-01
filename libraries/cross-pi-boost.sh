@@ -17,12 +17,18 @@ TARGET_DIR=$HOME/cross-pi-build/libraries/${BOOST_NAME}
 # download the boost code, store in temporary directory
 rm -Rf /tmp/build_boost
 mkdir /tmp/build_boost
-wget https://dl.bintray.com/boostorg/release/1.${BOOST_VERSION}.0/source/${BOOST_NAME}.tar.bz2 -P /tmp/build_boost
+# get boost (this fails too often!!)
+# wget https://dl.bintray.com/boostorg/release/1.${BOOST_VERSION}.0/source/${BOOST_NAME}.tar.bz2 -P /tmp/build_boost
 # 
-# cp -v /NAS_openbzr/redist/boost_1_72_0.tar.bz2  /tmp/build_boost/
-#
 # move to download directory and extract the package
 pushd /tmp/build_boost > /dev/null 
+#
+# get from our cache
+git clone https://github.com/arnholm/soft-cache
+pushd soft-cache/${BOOST_NAME} > /dev/null 
+./concat.sh /tmp/build_boost
+popd > /dev/null
+#
 tar -xvf ${BOOST_NAME}.tar.bz2
 
 # Move to main boost folder to perform the bootstrap and generate ./b2
