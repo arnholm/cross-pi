@@ -81,7 +81,7 @@ If all you wanted was a cross-compiler, your journey could end here. For librari
 
 See the libraries subfolder for the scripts mentioned here. 
 
-You must complete the **cross-pi-buildroot.sh** step before running either of them, since they depend on the cross-compiler. Even if you don't plan to build or use these libraries, they serve as examples for how to use the cross-compiler from various build systems.
+You must complete the **cross-pi-buildroot.sh** step before running either of them, since the libraries are built using the cross-compiler. Even if you don't plan to build or use these libraries, they serve as examples on how to use the cross-compiler with various build systems.
 
 3.1 **cross-pi-boost.sh** - Builds cross-pi version of boost libraries
   * Skip this if you don't use boost
@@ -105,12 +105,12 @@ You must complete the **cross-pi-buildroot.sh** step before running either of th
 
 See the codeblocks subfolder for the scripts mentioned here.
 
-**cross-pi-codeblocks.sh** - Installs Code::Blocks IDE and configures it to use with the cross compiler toolchain. You will be asked  whether to install Code::Blocks from Ubuntu repository (fast, but old version) or build from source (slower, but up to date). 
+**cross-pi-codeblocks.sh** - Installs Code::Blocks IDE and configures it to use with the cross compiler toolchain. You will be asked  whether to install Code::Blocks from Ubuntu repository (fast, but old version) or build from source (slower, but up to date).
 
 
 ## Step 5: Compile and run samples
 
-See the samples subfolder for the scripts mentioned here. This step requires steps 1-4 to be completed first.
+See the samples subfolder for the scripts mentioned here. This step requires steps 1-4 to be completed first. Please do **NOT** open the samples worspace file directly in the cross-pi/samples area, but instead run **cross-pi-samples.sh** which will make a copy as described below.
 
 **cross-pi-samples.sh** - Copies the sample application source code to the build area. To build the sample applications, open the Code::Blocks workspace file and build
 
@@ -120,6 +120,6 @@ When built successfully, the Raspberry PI executables are copied to the staging 
 
     ~/cross-pi-build/samples/stage
     
-**cross-pi-scp.sh** - Copies the cross-compiled executable(s) found in the staging area to the host Raspberry PI. This requires SSH to be enabled on the PI. This script can also be accessed via the Tools menu in Code::Blocks
+**cross-pi-scp.sh** - Copies the cross-compiled executable(s) found in the staging area to the host Raspberry PI in the PI users _Downloads_ directory. This requires SSH to be enabled on the PI. This script can also be accessed via the Tools menu in Code::Blocks.
 
 ![](samples/cross_pi_gui_sample/tools_menu.png)

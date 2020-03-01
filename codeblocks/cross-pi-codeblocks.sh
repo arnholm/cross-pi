@@ -2,11 +2,11 @@
 echo "   "
 echo "Code::Blocks install alternatives:"
 echo "   0: Quit, do nothing"
-echo "   1: Install from Ubuntu repository (recommended) + generate Code::Blocks config"
-echo "   2: Build from source code (advanced, may fail)  + generate Code::Blocks config"
+echo "   1: Install from Ubuntu repository (fast, but old version) + generate Code::Blocks config"
+echo "   2: Build from source code (slower, but up to date version)  + generate Code::Blocks config"
 echo "   3: Generate Code::blocks config only"
 echo "   "
-echo "   Warning: any existing Code::Blocks onfig will be backed up and replaced"
+echo "   Warning: any existing Code::Blocks config will be backed up and replaced"
 echo "   "
 read -p "Your choice [0..3]? " choice
 INSTALL_OPTION=0;
