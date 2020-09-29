@@ -10,6 +10,7 @@ fi
 # make sure the installation root folder exists
 mkdir -p $HOME/cross-pi-build
 TARGET_DIR=$HOME/cross-pi-build/libraries/msgpack-c
+BROOT=$HOME/cross-pi-build/libraries/boost_1_72_0/
 
 # download the boost code, store in temporary directory
 rm -Rf /tmp/build_msgpack-c
@@ -27,7 +28,7 @@ echo "set(CMAKE_CXX_COMPILER $HOME/cross-pi-build/buildroot/output/host/bin/arm-
 echo "set(CMAKE_SYSROOT      $HOME/cross-pi-build/buildroot/output/host/arm-buildroot-linux-gnueabihf/sysroot/ )" >> ./rpi_toolchain.cmake
 
 # invoke cmake with the given toolchain
-cmake -D CMAKE_TOOLCHAIN_FILE=./rpi_toolchain.cmake .
+cmake -DBOOST_ROOT=$BROOT -D CMAKE_TOOLCHAIN_FILE=./rpi_toolchain.cmake .
 
 # run make and install to DESTDIR
 make DESTDIR=${TARGET_DIR} install
