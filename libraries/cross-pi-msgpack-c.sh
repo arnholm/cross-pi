@@ -14,7 +14,8 @@ TARGET_DIR=$HOME/cross-pi-build/libraries/msgpack-c
 # download the boost code, store in temporary directory
 rm -Rf /tmp/build_msgpack-c
 mkdir -p /tmp/build_msgpack-c
-pushd /tmp/build_msgpack-c  > /dev/null 
+pushd /tmp/build_msgpack-c  > /dev/null
+git checkout cpp_master
 
 # Get msgpack-c source from github
 git clone https://github.com/msgpack/msgpack-c.git
