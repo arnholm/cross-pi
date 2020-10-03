@@ -1,0 +1,6 @@
+set(CMAKE_SYSTEM_NAME Linux)
+set(CMAKE_SYSTEM_PROCESSOR arm)
+set(buildroot $ENV{HOME}/cross-pi-build/buildroot/)
+set(CMAKE_SYSROOT       ${buildroot}/output/host/arm-buildroot-linux-gnueabihf/sysroot/)
+set(CMAKE_C_COMPILER    ${buildroot}/output/host/usr/bin/arm-linux-gcc)
+set(CMAKE_CXX_COMPILER  ${buildroot}/output/host/usr/bin/arm-linux-g++)
